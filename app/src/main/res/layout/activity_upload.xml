@@ -9,11 +9,17 @@
     >
 
     <Button
+        android:layout_alignParentRight="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/loginbutton_selector"
+        android:layout_below="@id/button_verify_phone"
+        android:textColor="@color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp"
         android:onClick="browseImages"
-        android:text="Browse Image"
-        android:layout_margin="5dp"/>
+        android:text="Browse Image"/>
 
     <ImageView
         android:id="@+id/insertImages"
@@ -23,11 +29,21 @@
         android:layout_gravity="center"
         android:layout_margin="5dp"/>
 
+
     <Button
+        android:layout_alignParentRight="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/loginbutton_selector"
+        android:layout_below="@id/button_verify_phone"
+        android:textColor="@color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="15sp"
         android:onClick="uploadData"
-        android:text="Upload photo"
-        android:layout_margin="5dp"/>
+        android:text="Upload photo"/>
+
+
+
 
 </LinearLayout>

@@ -7,25 +7,57 @@
     tools:context="com.prerna.saini.driver.exit"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text = "Upload Aadhar card"
-        android:id="@+id/upload_a"
-        android:onClick="Aadhar"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text = "Upload driving licence"
-        android:id="@+id/upload_d"
-        android:onClick="licence"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text = "sign out"
-        android:id="@+id/sign_out"
-        android:onClick="signoutbutton"/>
+
+        <Button
+            android:layout_alignParentLeft="true"
+            android:id="@+id/upload_a"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft ="110dp"
+            android:layout_marginTop="50dp"
+            android:text="Upload Aadhar card"
+            android:padding="10dp"
+            android:background="@drawable/loginbutton_selector"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white_greyish"
+            android:textSize="15sp"
+            android:onClick="Aadhar"
+            />
+
+        <Button
+            android:layout_alignParentRight="true"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft ="110dp"
+            android:padding ="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/loginbutton_selector"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="15sp"
+            android:text = "Upload driving licence"
+            android:id="@+id/upload_d"
+            android:onClick="licence"/>
+
+        <Button
+
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft ="110dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/button_start_verification"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:background="@drawable/loginbutton_selector"
+            android:textSize="15sp"
+            android:text = "sign out"
+            android:id="@+id/sign_out"
+            android:onClick="signoutbutton"/>
+
+
+
+
 
 </LinearLayout>
