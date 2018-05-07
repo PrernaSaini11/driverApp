@@ -43,8 +43,6 @@ public class upload extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
         imageView = (ImageView) findViewById(R.id.insertImages);
-        name = (EditText) findViewById(R.id.insertName);
-        email = (EditText) findViewById(R.id.insertEmail);
 
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
