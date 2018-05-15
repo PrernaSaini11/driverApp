@@ -299,6 +299,7 @@ public class sec extends AppCompatActivity implements View.OnClickListener {
                                         //    myRef.child("users").child(userID).child("Name").setValue("true");
                                         myRef.child("users").child(userID).child("contact").setValue(contactno);
                                         myRef.child("users").child(userID).child("name").setValue(name_user);
+                                        myRef.child("users").child(userID).child("images");
 
                                         Intent y = new Intent(sec.this, exit.class);
                                         y.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

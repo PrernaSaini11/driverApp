@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -33,6 +35,8 @@ public class upload extends AppCompatActivity {
 
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
+    FirebaseUser fuser;
+    FirebaseAuth mauth;
 
     public static final String STORAGE_PATH = "documents/";
     public static final String DATABASE_PATH = "users";
@@ -43,9 +47,12 @@ public class upload extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
         imageView = (ImageView) findViewById(R.id.insertImages);
+        mauth = FirebaseAuth.getInstance();
+        fuser = mauth.getCurrentUser();
 
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(mauth.getCurrentUser().getUid());
+
     }
 
     public void browseImages(View view) {
@@ -87,21 +94,19 @@ public class upload extends AppCompatActivity {
             progressDialog.setTitle("Uploading");
             progressDialog.show();
 
-            StorageReference reference = storageReference.child(STORAGE_PATH + System.currentTimeMillis() + "." + getActualImage(imageUri));
-
+          //  StorageReference reference = storageReference.child(STORAGE_PATH + System.currentTimeMillis() + "." + getActualImage(imageUri));
+                StorageReference reference = storageReference.child("documents/").child(imageUri.getLastPathSegment());
             reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    String NAME = name.getText().toString();
-                    String EMAIl = email.getText().toString();
+                 //   Person person = new Person(NAME, EMAIl, taskSnapshot.getDownloadUrl().toString());
 
-                    Person person = new Person(NAME, EMAIl, taskSnapshot.getDownloadUrl().toString());
+                    String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                    String id = databaseReference.push().getKey();
-
-                    databaseReference.child(id).setValue(person);
-
+                   // databaseReference.child(id).setValue(person);
+                   // databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    databaseReference.child("images").setValue(taskSnapshot.getDownloadUrl().toString());
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), "photo uploaded", Toast.LENGTH_LONG).show();
                 }
